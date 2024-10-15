@@ -177,51 +177,74 @@ blameworthy_Morals = [
     "النَّميمةُ",
     "الهَجْرُ",
     "الهَمْزُ واللَّمزُ",
-    "الوَهَنُ",
+    "الوَهَن",
     "اليأسُ و القُنوطُ و الإحباطُ",
 ]
 
 
 
 # Function to perform stemming
+# Dictionary to override specific stems for known problematic words
+override_stems = {
+    "الوَهَن": "وهن",  # Correct root for الوَهَن
+    "المَنَّ": "منّ",  # Correct root for المَنَّ
+    # Add more words as needed
+}
+
+# Function to perform stemming
 def stem_words(words):
     stems = []
     for word in words:
-        analyses = morph_analyzer.analyze(word)
-        if analyses:
-            stems.append(analyses[0]['stem'])
+        # Check if the word has an override
+        if word in override_stems:
+            stems.append(override_stems[word])
         else:
-            stems.append(word)
+            analyses = morph_analyzer.analyze(word)
+            if analyses:
+                # Log all analyses for inspection if needed
+                if word == "الوَهَن" or word == "المَنَّ":  # Adjust as necessary for other problematic words
+                    print(f"Analyses for {word}: {analyses}")
+                stems.append(analyses[0]['stem'])
+            else:
+                stems.append(word)
     return stems
 
-""" # Function to classify a citation based on the analyzed words
-def classify_citation(citation):
-    words = simple_word_tokenize(citation)
-    stems = stem_words(words)
-    for stem in stems:
-        if stem in good_Morals:
-            return "Good Moral: " + stem
-        elif stem in blameworthy_Morals:
-            return "Blameworthy Moral: " + stem
-    # Use sentiment analyzer if no specific moral is found
-    sentiment = sentiment_analyzer.predict([citation])[0]
-    return "Sentiment: " + sentiment """
+
 # Stem the good and blameworthy morals lists
 good_Morals_stemmed = stem_words(good_Morals)
 blameworthy_Morals_stemmed = stem_words(blameworthy_Morals)
+good_Morals_stemmed = [moral.strip() for moral in good_Morals_stemmed]
+blameworthy_Morals_stemmed = [moral.strip() for moral in blameworthy_Morals_stemmed]
+
+
+
+
 
 # Function to classify a citation based on the analyzed words
 def classify_citation(citation):
+    # Check direct match with full phrases first
+    for moral in good_Morals:
+        if moral in citation:
+            return "Good Moral: " + moral
+    for moral in blameworthy_Morals:
+        if moral in citation:
+            return "Blameworthy Moral: " + moral
+    
+    # If no full phrase matches, tokenize and stem the citation
     words = simple_word_tokenize(citation)
     stems = stem_words(words)
+
+    # Check stems against the stemmed good and blameworthy lists
     for stem in stems:
         if stem in good_Morals_stemmed:
             return "Good Moral: " + stem
         elif stem in blameworthy_Morals_stemmed:
             return "Blameworthy Moral: " + stem
+
     # Use sentiment analyzer if no specific moral is found
     sentiment = sentiment_analyzer.predict([citation])[0]
     return "Sentiment: " + sentiment
+
 
 # Create an Excel workbook and worksheet
 workbook = xlsxwriter.Workbook('manners.xlsx')
