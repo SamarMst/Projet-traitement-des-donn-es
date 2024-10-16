@@ -305,6 +305,1084 @@ for div in divs:
 
 
 
+# Website 9
+url9 = 'https://qaoul.com/m/%D8%A3%D9%82%D9%88%D8%A7%D9%84-%D8%B9%D9%86-%D8%A7%D9%84%D8%B4%D8%AC%D8%A7%D8%B9%D8%A9'
+response9 = requests.get(url9)
+
+# Set correct encoding for Arabic text
+response9.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup9 = BeautifulSoup(response9.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup9.find_all("div", class_="quote-content")
+
+# Iterate through each quote-content div and extract the <p> text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find the first <p> element within the blockquote
+        p = blockquote.find("p")
+        
+        if p:
+            # Extract the text from the <span> inside the <p>
+            p_text = p.get_text(strip=True)  # Get the text of the <p>
+            if p_text:  # Append to the list if the text is not empty
+                li_manners.append(p_text)
+
+# Find all divs with the specified style
+divs = soup9.find_all("div", style="display: inline-grid;grid-template-columns: max-content max-content;column-gap: 50px") 
+# Iterate through each div and combine the text of the spans
+for div in divs:
+    spans = div.find_all("span")
+    combined_phrase = ' '.join(span.get_text(strip=True) for span in spans)  # Combine span texts into a single string
+    
+    li_manners.append(combined_phrase)  # Add the deduplicated phrase
+
+
+
+# Website 10
+url10 = 'https://qaoul.com/m/%D9%83%D9%84%D9%85%D8%A7%D8%AA-%D8%B9%D9%86-%D8%A7%D9%84%D9%88%D9%81%D8%A7%D8%A1'
+response10 = requests.get(url10)
+
+# Set correct encoding for Arabic text
+response10.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup10 = BeautifulSoup(response10.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup10.find_all("div", class_="quote-content")
+
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+# Find all divs with the specified style
+divs = soup10.find_all("div", style="display: inline-grid;grid-template-columns: max-content max-content;column-gap: 50px")
+  
+# Iterate through each div and combine the text of the spans
+for div in divs:
+    spans = div.find_all("span")
+    combined_phrase = ' '.join(span.get_text(strip=True) for span in spans)  # Combine span texts into a single string
+    
+    # Remove duplicated phrases
+    words = combined_phrase.split()  # Split into words
+    unique_words = list(dict.fromkeys(words))  # Remove duplicates while preserving order
+    final_phrase = ' '.join(unique_words)  # Join back the unique words
+    
+    li_manners.append(final_phrase)  # Add the deduplicated phrase
+
+
+#Website 11
+
+url11 = 'https://tweet.gulffalcons.net/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D8%B9%D9%86-%D9%83%D8%AA%D9%85%D8%A7%D9%86-%D8%A7%D9%84%D8%B3%D8%B1-%D9%83%D8%AA%D9%85%D8%A7%D9%86-%D8%A7%D9%84%D8%B3%D8%B1-%D9%88%D8%AD%D9%81%D8%B8-%D8%A7%D9%84/?fbclid=IwZXh0bgNhZW0CMTEAAR1Q7VZyFeVi08JcMVdi0NwBSuuA8095tMIcw8dQT3TTJQLktQ72nwogC58_aem_WbLiv5Ve_ShIWg3IiYQ_mQ' 
+response11 = requests.get(url11)
+soup11 = BeautifulSoup(response11.content, 'html.parser')
+
+# Find the article body
+article_body = soup.find("div", id="article-body")
+
+if article_body is None:
+    print("Could not find the div with id 'article-body'. Check the page structure.")
+else:
+    # Find all <li> elements
+    li_elements = article_body.find_all("li")
+
+    # Flag to start collecting from the specified <li>
+    collect = False
+
+    for li in li_elements:
+        # Check if the text starts with the specific phrase
+        if li.get_text(strip=True) == "ثلاث خلاصات؛  تقوى الله في السر والعلن، والقصد في الفقر والغنى، والعدل في الغضب والرضا.":
+            collect = True  # Start collecting from this point
+        if collect:
+            # Get the text directly from the <li> without including <a> text
+            li_text = ''.join([str(content).strip() for content in li.contents if isinstance(content, str)])
+            if li_text:
+                li_manners.append(li_text)
+
+
+#Website 12
+url12 = 'https://qaoul.com/m/%D9%82%D8%A7%D9%84%D9%88%D8%A7-%D8%B9%D9%86-%D8%A7%D9%84%D8%B1%D8%AD%D9%85%D8%A9'
+response12 = requests.get(url12)
+
+# Set correct encoding for Arabic text
+response12.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup12 = BeautifulSoup(response12.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup12.find_all("div", class_="quote-content")
+
+
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote: 
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+
+# Website 13
+url13 = 'https://qaoul.com/m/%D8%A3%D9%82%D9%88%D8%A7%D9%84-%D8%B9%D9%86-%D8%A7%D9%84%D9%82%D9%86%D8%A7%D8%B9%D8%A9'
+response13 = requests.get(url13)
+
+# Set correct encoding for Arabic text
+response13.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup13 = BeautifulSoup(response13.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup13.find_all("div", class_="quote-content")
+
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+# Find all divs with the specified style
+divs = soup13.find_all("div", style="display: inline-grid;grid-template-columns: max-content max-content;column-gap: 50px")
+
+# Iterate through each div and combine the text of the spans
+for div in divs:
+    spans = div.find_all("span")
+    combined_phrase = ' '.join(span.get_text(strip=True) for span in spans)  # Combine span texts into a single string
+    li_manners.append(combined_phrase)  # Add the deduplicated phrase
+
+
+# Website 14
+url14 = 'https://qaoul.com/m/%D8%A3%D9%82%D9%88%D8%A7%D9%84-%D8%B9%D9%86-%D8%A7%D9%84%D8%B5%D8%A8%D8%B1'
+response14 = requests.get(url14)
+
+# Set correct encoding for Arabic text
+response14.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup14 = BeautifulSoup(response14.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup14.find_all("div", class_="quote-content")
+
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+# Website 15
+url15 = 'https://qaoul.com/m/%D8%A3%D9%82%D9%88%D8%A7%D9%84-%D8%B9%D9%86-%D8%A7%D9%84%D8%AE%D9%8A%D8%A7%D9%86%D8%A9'
+response15 = requests.get(url15)
+
+# Set correct encoding for Arabic text
+response15.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup15 = BeautifulSoup(response15.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup15.find_all("div", class_="quote-content")
+
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+
+# Website 16
+url16 = 'https://qaoul.com/m/%D8%A3%D9%82%D9%88%D8%A7%D9%84-%D8%B9%D9%86-%D8%A7%D9%84%D8%AA%D9%83%D8%A8%D8%B1'
+response16 = requests.get(url16)
+
+# Set correct encoding for Arabic text
+response16.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup16 = BeautifulSoup(response16.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup16.find_all("div", class_="quote-content")
+
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+# Website 17
+url17 = 'https://qaoul.com/m/%D8%A3%D8%AC%D9%85%D9%84-%D9%85%D8%A7-%D9%82%D9%8A%D9%84-%D9%81%D9%8A-%D8%A7%D9%84%D9%83%D8%B1%D9%85'
+response17 = requests.get(url17)
+
+# Set correct encoding for Arabic text
+response17.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup17 = BeautifulSoup(response17.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup17.find_all("div", class_="quote-content")
+
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+
+# Website 18
+url18= 'https://qaoul.com/m/%D9%82%D8%A7%D9%84%D9%88%D8%A7-%D8%B9%D9%86-%D8%A7%D9%84%D9%83%D9%84%D8%A7%D9%85-%D8%A7%D9%84%D8%AC%D8%A7%D8%B1%D8%AD'
+response18= requests.get(url18)
+
+# Set correct encoding for Arabic text
+response18.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup18= BeautifulSoup(response18.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup18.find_all("div", class_="quote-content")
+
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+# Website 19
+url19= 'https://qaoul.com/m/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D9%88%D8%A3%D9%82%D9%88%D8%A7%D9%84-%D8%B9%D9%86-%D8%A7%D9%84%D8%AD%D9%85%D9%82%D9%89'
+response19= requests.get(url19)
+
+# Set correct encoding for Arabic text
+response19.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup19= BeautifulSoup(response19.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup19.find_all("div", class_="quote-content")
+
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+# Website 20
+url20= 'https://qaoul.com/m/%D8%A3%D8%AC%D9%85%D9%84-%D9%85%D8%A7-%D9%82%D9%8A%D9%84-%D8%B9%D9%86-%D8%A7%D9%84%D8%B3%D8%B1'
+response20= requests.get(url20)
+
+# Set correct encoding for Arabic text
+response20.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup20= BeautifulSoup(response20.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup20.find_all("div", class_="quote-content")
+
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+# Website 21
+url21= 'https://qaoul.com/m/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D9%85%D9%86-%D8%A3%D9%82%D9%88%D8%A7%D9%84-%D8%A7%D9%84%D8%AD%D9%83%D9%85%D8%A7%D8%A1'
+response21= requests.get(url21)
+
+# Set correct encoding for Arabic text
+response21.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup21= BeautifulSoup(response21.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup21.find_all("div", class_="quote-content")
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+# Website 22
+url22= 'https://qaoul.com/m/%D9%82%D8%A7%D9%84%D9%88%D8%A7-%D8%B9%D9%86-%D8%A7%D9%84%D8%A8%D8%AE%D9%84'
+response22= requests.get(url22)
+
+# Set correct encoding for Arabic text
+response22.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup22= BeautifulSoup(response22.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup22.find_all("div", class_="quote-content")
+
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+
+# Website 23
+url23= 'https://qaoul.com/m/%D9%83%D9%84%D8%A7%D9%85-%D8%B9%D9%86-%D8%A5%D8%AE%D9%84%D8%A7%D9%81-%D8%A7%D9%84%D9%88%D8%B9%D8%AF'
+response23= requests.get(url23)
+
+# Set correct encoding for Arabic text
+response23.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup23= BeautifulSoup(response23.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup23.find_all("div", class_="quote-content")
+
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+# Website 24
+url24= 'https://qaoul.com/m/%D9%83%D9%84%D8%A7%D9%85-%D8%B9%D9%86-%D8%A7%D9%84%D8%B7%D9%85%D8%B9'
+response24= requests.get(url24)
+
+# Set correct encoding for Arabic text
+response24.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup24= BeautifulSoup(response24.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup24.find_all("div", class_="quote-content")
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+# Website 25
+url25= 'https://qaoul.com/m/%D9%83%D9%84%D8%A7%D9%85-%D9%81%D9%8A-%D8%A7%D9%84%D8%B5%D9%85%D9%8A%D9%85-%D9%84%D9%84%D8%AE%D8%A7%D8%A6%D9%86%D9%8A%D9%86'
+response25= requests.get(url25)
+
+# Set correct encoding for Arabic text
+response25.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup25= BeautifulSoup(response25.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup25.find_all("div", class_="quote-content")
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+# Website 26
+url26= 'https://qaoul.com/m/%D8%AD%D9%83%D9%85-%D8%B9%D9%86-%D8%A7%D9%84%D8%BA%D8%AF%D8%B1'
+response26= requests.get(url26)
+
+# Set correct encoding for Arabic text
+response26.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup26= BeautifulSoup(response26.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup26.find_all("div", class_="quote-content")
+
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+
+# Website 28
+url28= 'https://qaoul.com/m/%D8%AD%D9%83%D9%85-%D8%B9%D9%86-%D8%B8%D9%86-%D8%A8%D9%84%D8%B3%D9%88%D8%A1'
+response28= requests.get(url28)
+
+# Set correct encoding for Arabic text
+response28.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup28= BeautifulSoup(response28.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup28.find_all("div", class_="quote-content")
+
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+
+# Website 29
+url29= 'https://qaoul.com/m/%D8%AD%D9%83%D9%85-%D9%84%D9%84%D9%8A%D8%A7%D8%A6%D8%B3%D9%8A%D9%86'
+response29= requests.get(url29)
+
+# Set correct encoding for Arabic text
+response29.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup29= BeautifulSoup(response29.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup29.find_all("div", class_="quote-content")
+
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+# Website 30
+url30= 'https://qaoul.com/m/%D8%AD%D9%83%D9%85-%D8%B9%D9%86-%D8%A7%D9%84%D8%A8%D8%AE%D9%8A%D9%84'
+response30= requests.get(url30)
+
+# Set correct encoding for Arabic text
+response30.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup30= BeautifulSoup(response30.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup30.find_all("div", class_="quote-content")
+
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+# Website 31
+url31= 'https://qaoul.com/m/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D8%B4%D9%83%D8%B1-%D9%88%D8%AB%D9%86%D8%A7%D8%A1'
+response31= requests.get(url31)
+
+# Set correct encoding for Arabic text
+response31.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup31= BeautifulSoup(response31.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup31.find_all("div", class_="quote-content")
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+
+# Website 32
+url32= 'https://qaoul.com/m/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D8%B4%D9%83%D8%B1-%D9%88%D8%AA%D9%82%D8%AF%D9%8A%D8%B1-%D9%84%D9%84%D8%A3%D8%AD%D8%A8%D8%A9'
+response32= requests.get(url32)
+
+# Set correct encoding for Arabic text
+response32.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup32= BeautifulSoup(response32.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup32.find_all("div", class_="quote-content")
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+
+# Website 33
+url33= 'https://qaoul.com/m/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D8%B9%D9%86-%D8%A3%D8%B5%D8%AD%D8%A7%D8%A8-%D8%A7%D9%84%D9%88%D8%AC%D9%87%D9%8A%D9%86'
+response33= requests.get(url33)
+
+# Set correct encoding for Arabic text
+response33.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup33= BeautifulSoup(response33.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup33.find_all("div", class_="quote-content")
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+
+# Website 34
+url34= 'https://qaoul.com/m/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D9%84%D9%84%D8%A3%D9%88%D9%81%D9%8A%D8%A7%D8%A1'
+response34= requests.get(url34)
+
+# Set correct encoding for Arabic text
+response34.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup34= BeautifulSoup(response34.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup34.find_all("div", class_="quote-content")
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+
+# Website 35
+url35= 'https://qaoul.com/m/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D9%84%D9%84%D8%BA%D9%8A%D9%88%D8%B1%D9%8A%D9%86'
+response35= requests.get(url35)
+
+# Set correct encoding for Arabic text
+response35.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup35= BeautifulSoup(response35.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup35.find_all("div", class_="quote-content")
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+
+# Website 36
+url36= 'https://qaoul.com/m/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D9%84%D9%84%D8%AC%D9%87%D9%84%D8%A7%D8%A1'
+response36= requests.get(url36)
+
+# Set correct encoding for Arabic text
+response36.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup36= BeautifulSoup(response36.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup36.find_all("div", class_="quote-content")
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+
+# Website 37
+url37= 'https://qaoul.com/m/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D8%B9%D9%86-%D8%A7%D9%84%D9%85%D8%AA%D9%83%D8%A8%D8%B1%D9%8A%D9%86'
+response37= requests.get(url37)
+
+# Set correct encoding for Arabic text
+response37.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup37= BeautifulSoup(response37.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup37.find_all("div", class_="quote-content")
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+
+# Website 38
+url38= 'https://qaoul.com/m/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D8%B9%D9%86-%D8%A7%D9%84%D8%AE%D8%B0%D9%84%D8%A7%D9%86'
+response38= requests.get(url38)
+
+# Set correct encoding for Arabic text
+response38.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup38= BeautifulSoup(response38.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup38.find_all("div", class_="quote-content")
+
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+# Website 39
+url39= 'https://qaoul.com/m/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D8%B9%D9%86-%D8%A7%D9%84%D8%AA%D8%B3%D8%A7%D9%85%D8%AD'
+response39= requests.get(url39)
+
+# Set correct encoding for Arabic text
+response39.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup39= BeautifulSoup(response39.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup39.find_all("div", class_="quote-content")
+
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+
+# Website 40
+url40= 'https://qaoul.com/m/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D9%85%D8%A4%D8%AB%D8%B1%D8%A9-%D8%B9%D9%86-%D8%A7%D9%84%D8%B8%D9%84%D9%85'
+response40= requests.get(url40)
+
+# Set correct encoding for Arabic text
+response40.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup40= BeautifulSoup(response40.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup40.find_all("div", class_="quote-content")
+
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+
+# Website 41
+url41= 'https://qaoul.com/m/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D8%B9%D9%86-%D8%B3%D9%88%D8%A1-%D8%A7%D9%84%D8%B8%D9%86'
+response41= requests.get(url41)
+
+# Set correct encoding for Arabic text
+response41.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup41= BeautifulSoup(response41.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup41.find_all("div", class_="quote-content")
+
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+
+# Website 42
+url42= 'https://qaoul.com/m/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D8%B9%D9%86-%D8%A7%D9%84%D8%B1%D9%81%D9%82'
+response42= requests.get(url42)
+
+# Set correct encoding for Arabic text
+response42.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup42= BeautifulSoup(response42.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup42.find_all("div", class_="quote-content")
+
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+
+# Website 43
+url43= 'https://qaoul.com/m/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D8%B9%D9%86-%D9%82%D9%88%D9%84-%D8%A7%D9%84%D8%AD%D9%82'
+response43= requests.get(url43)
+
+# Set correct encoding for Arabic text
+response43.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup43= BeautifulSoup(response43.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup43.find_all("div", class_="quote-content")
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+
+# Website 44
+url44= 'https://qaoul.com/m/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D8%B9%D9%86-%D8%AB%D9%82%D9%8A%D9%84-%D8%A7%D9%84%D8%B8%D9%84'
+response44= requests.get(url44)
+
+# Set correct encoding for Arabic text
+response44.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup44= BeautifulSoup(response44.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup44.find_all("div", class_="quote-content")
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+# Website 45
+url45= 'https://qaoul.com/m/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D8%B9%D9%86-%D8%AD%D9%83%D9%85%D8%A9-%D8%A7%D9%84%D9%8A%D9%88%D9%85'
+response45= requests.get(url45)
+
+# Set correct encoding for Arabic text
+response45.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup45= BeautifulSoup(response45.content, 'html.parser')
+
+# Find all quote-content divs
+quote_contents = soup45.find_all("div", class_="quote-content")
+phrases = [] 
+# Iterate through each quote-content div and extract text
+for quote in quote_contents:
+    # Find the blockquote element within each quote-content div
+    blockquote = quote.find("blockquote")
+    
+    if blockquote:
+        # Find all <p> and <div> elements within the blockquote
+        paragraphs_and_divs = blockquote.find_all('p')
+        
+        # Iterate through found elements and get the text
+        for elem in paragraphs_and_divs:
+            text = elem.get_text(strip=True)
+            if text:  # Append the non-empty text to the list
+                li_manners.append(text)
+
+
+# Website 46
+url46 = 'https://qaoul.com/m/%D8%AD%D9%83%D9%85-%D8%B9%D9%86-%D8%A7%D9%84%D8%AE%D9%8A%D8%A7%D9%86%D8%A9-%D9%88%D8%A7%D9%84%D8%AE%D8%A7%D8%A6%D9%86%D9%8A%D9%86'
+response46 = requests.get(url46)
+
+# Set correct encoding for Arabic text
+response46.encoding = 'utf-8'
+phrases = [] 
+# Parse the page content using BeautifulSoup
+soup46 = BeautifulSoup(response46.content, 'html.parser')
+# Find the <h2> element with the specific id
+h2_element = soup46.find('h2', {'id': '.COT-أقوال_عن_الخيانة_والخائنين_6236c26fdf388'})
+
+# Find the next <ul> element following the <h2>
+ul_element = h2_element.find_next('ul')
+
+# Find all <li> items within this <ul>
+list_items = ul_element.find_all('li')
+
+# Extract the text from each <li> element (or from <span> if you prefer)
+li_texts = [li.get_text(strip=True) for li in list_items]
+li_manners.extend(li_texts)
+
+
+
 
 good_Morals = [
     "الاحترامُ والتَّوقِيرُ",
