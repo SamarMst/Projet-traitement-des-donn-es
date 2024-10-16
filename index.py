@@ -5,6 +5,8 @@ import xlsxwriter
 from camel_tools.morphology.database import MorphologyDB
 from camel_tools.morphology.analyzer import Analyzer
 from camel_tools.tokenizers.word import simple_word_tokenize
+import csv
+import re
 
 # Load the built-in language model database
 db = MorphologyDB.builtin_db()
@@ -38,6 +40,144 @@ li_manners = []
 
 for li in li_elements:
     li_manners.append(li.text)
+
+# Website 2
+url1 = 'https://tweet.gulffalcons.net/%D8%A7%D8%AC%D9%85%D9%84-%D9%85%D8%A7-%D9%82%D9%8A%D9%84-%D8%B9%D9%86-%D8%A7%D9%84%D8%B5%D8%A8%D8%B1-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D8%A8%D9%84%D8%A7%D8%A1-%D9%88%D8%A7%D9%84%D8%AD%D8%A8-%D9%83%D9%84/'
+response1 = requests.get(url1)
+
+# Set correct encoding for Arabic text
+response1.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup = BeautifulSoup(response1.content, 'html.parser')
+div1 = soup.find("div", id="article-body")
+
+# Find all 'li' elements (assuming proverbs are within list items)
+
+for ul in div1.find_all('ul')[1:5]:  # Adjust range based on the number of <ul> elements
+    li_elements = ul.find_all('li')
+    for li in li_elements:
+        li_manners.append(li.text.strip())
+
+
+# Website 3
+url2 = 'https://tweet.gulffalcons.net/%D8%AD%D9%83%D9%85-%D8%B9%D9%86-%D8%A7%D9%84%D8%B5%D8%A8%D8%B1-%D9%88%D8%A7%D9%84%D8%AA%D8%AD%D9%85%D9%84-%D8%A3%D8%AC%D9%85%D9%84-%D8%A3%D9%82%D9%88%D8%A7%D9%84-%D8%B9%D9%86-%D8%A7%D9%84%D8%B5%D8%A8/'
+response2 = requests.get(url2)
+
+# Set correct encoding for Arabic text
+response2.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup = BeautifulSoup(response2.content, 'html.parser')
+div2 = soup.find("div", id="article-body")
+
+# Find all 'li' elements (assuming proverbs are within list items)
+
+for ul in div2.find_all('ul')[1:7]:  # Adjust range based on the number of <ul> elements
+    li_elements = ul.find_all('li')
+    for li in li_elements:
+        li_manners.append(li.text.strip())
+
+# Function to recursively extract text from <li> and nested <ul> elements
+def extract_li_text(ul_element):
+    li_items = ul_element.find_all('li', recursive=False)  # Get all direct <li> children
+    extracted_text = []
+
+    for li in li_items:
+        # Extract the text from the current <li> item
+        text = li.get_text(strip=True)
+        extracted_text.append(text)
+
+        # If there is a nested <ul> inside this <li>, extract its text as well
+        nested_ul = li.find('ul')
+        if nested_ul:
+            extracted_text.extend(extract_li_text(nested_ul))  # Recursively extract from nested <ul>
+
+    return extracted_text
+
+# Process ul_element5
+ul_element6 = div2.find_all('ul')[8]  # Adjust based on the correct index of the <ul>
+li_manners6 = extract_li_text(ul_element6)  # Recursively extract text from <ul> and <li> elements
+li_manners.extend(li_manners6)  # Add extracted text to the manners list
+
+
+#Website 
+url4 = 'https://qaoul.com/m/%D8%A3%D9%82%D9%88%D8%A7%D9%84-%D8%B9%D9%86-%D8%A7%D9%84%D9%85%D8%AF%D8%AD'
+response4 = requests.get(url4)
+
+# Set correct encoding for Arabic text
+response4.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup4 = BeautifulSoup(response4.content, 'html.parser')
+#div4 = soup4.find("div", attrs={"class": ["article-text", "links-color"]})
+# Find all divs with class 'quote-content'
+# Find all quote-content divs
+quote_contents = soup4.find_all("div", class_="quote-content")
+
+# List to store the extracted text
+
+
+# Iterate through each quote-content div and extract the <p> text
+for quote in quote_contents:
+    # Find all blockquote elements within each quote-content div
+    blockquotes = quote.find_all("blockquote")
+    
+    for blockquote in blockquotes:
+        # Find all <p> elements within the blockquote
+        paragraphs = blockquote.find_all("p")
+        
+        # Check if there is a valid second <p> and extract its text
+        if len(paragraphs) > 1:
+            p_text = paragraphs[1].get_text(strip=True)  # Get the text of the second <p>
+            if p_text:  # Append to the list if the text is not empty
+                li_manners.append(p_text)
+
+# Find all divs with the specified style (you can also use a class if available)
+divs = soup4.find_all("div", style="display: inline-grid;grid-template-columns: max-content max-content;column-gap: 50px")
+# Iterate through each div and combine the text of the spans
+for div in divs:
+    spans = div.find_all("span")
+    combined_phrase = ' '.join(span.get_text(strip=True) for span in spans)  # Combine span texts into a single string
+    li_manners.append(combined_phrase)  # Append the combined string to the list
+
+#Website 5
+url5 = 'https://qaoul.com/m/%D8%AD%D9%83%D9%85-%D8%B9%D9%86-%D8%A7%D9%84%D8%AD%D8%B3%D8%AF'
+response5 = requests.get(url5)
+
+# Set correct encoding for Arabic text
+response5.encoding = 'utf-8'
+
+# Parse the page content using BeautifulSoup
+soup5 = BeautifulSoup(response5.content, 'html.parser')
+#div4 = soup5.find("div", attrs={"class": ["article-text", "links-color"]})
+# Find all divs with class 'quote-content'
+# Find all quote-content divs
+quote_contents = soup5.find_all("div", class_="quote-content")
+
+# Iterate through each quote-content div and extract the <p> text
+for quote in quote_contents:
+    # Find all blockquote elements within each quote-content div
+    blockquotes = quote.find_all("blockquote")
+    
+    for blockquote in blockquotes:
+        # Find all <p> elements within the blockquote
+        paragraphs = blockquote.find_all("p")
+        
+        # Check if there is a valid second <p> and extract its text
+        if len(paragraphs) > 1:
+            p_text = paragraphs[1].get_text(strip=True)  # Get the text of the second <p>
+            if p_text:  # Append to the list if the text is not empty
+                li_manners.append(p_text)
+
+# Find all divs with the specified style (you can also use a class if available)
+divs = soup5.find_all("div", style="display: inline-grid;grid-template-columns: max-content max-content;column-gap: 50px")
+
+
+# Iterate through each div and combine the text of the spans
+for div in divs:
+    spans = div.find_all("span")
+    combined_phrase = ' '.join(span.get_text(strip=True) for span in spans)  # Combine span texts into a single string
+    li_manners.append(combined_phrase)  # Append the combined string to the list
 
 
 good_Morals = [
@@ -245,6 +385,18 @@ def classify_citation(citation):
     sentiment = sentiment_analyzer.predict([citation])[0]
     return "Sentiment: " + sentiment
 
+# Create a CSV file
+with open('manners.csv', mode='w', newline='', encoding='utf-8') as csv_file:
+    fieldnames = ["Citation", "Manner"]
+    writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+
+    # Write the headers
+    writer.writeheader()
+
+    # Write the citations and their classifications to the CSV file
+    for citation in li_manners:
+        manner = classify_citation(citation)
+        writer.writerow({"Citation": citation, "Manner": manner})
 
 # Create an Excel workbook and worksheet
 workbook = xlsxwriter.Workbook('manners.xlsx')
