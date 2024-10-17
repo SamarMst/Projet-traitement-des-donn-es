@@ -1381,6 +1381,43 @@ list_items = ul_element.find_all('li')
 li_texts = [li.get_text(strip=True) for li in list_items]
 li_manners.extend(li_texts)
 
+# Website 47
+
+url47 = 'https://7ekam.com/praise/'
+response47 = requests.get(url47)
+soup47 = BeautifulSoup(response47.content, 'html.parser')
+
+# Find all <p> elements that do NOT contain <strong> tags
+p_elements = soup47.find_all('p', style=True)  # Get all <p> elements with inline styles
+
+for p in p_elements:
+    if not p.find('strong'):  # Filter out any <p> that contains a <strong> tag
+        li_manners.append(p.get_text())
+
+
+
+
+# Website 48
+url48 = 'https://www.edarabia.com/ar/%D8%A7%D9%84%D9%85%D8%AF%D8%AD-%D9%88-%D8%A3%D9%87%D9%85-49-%D8%B9%D8%A8%D8%A7%D8%B1%D8%A9-%D9%81%D9%8A-%D9%85%D8%AF%D8%AD-%D8%B4%D8%AE%D8%B5/'
+response48 = requests.get(url48)
+
+# Set correct encoding for Arabic text
+response48.encoding = 'utf-8'
+
+phrases = [] 
+
+# Parse the page content using BeautifulSoup
+soup48 = BeautifulSoup(response48.content, 'html.parser')
+
+# Find the h3 tag with id="2"
+h3_tag = soup48.find('h3', id='2')
+
+# Find the next ul after the h3 tag
+ul_tag = h3_tag.find_next('ul')
+
+# Extract the text from all <li> elements in this <ul>
+li_texts = [li.get_text(strip=True) for li in ul_tag.find_all('li')]
+li_manners.extend(li_texts)
 
 
 
