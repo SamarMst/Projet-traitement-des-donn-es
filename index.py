@@ -1404,8 +1404,6 @@ response48 = requests.get(url48)
 # Set correct encoding for Arabic text
 response48.encoding = 'utf-8'
 
-phrases = [] 
-
 # Parse the page content using BeautifulSoup
 soup48 = BeautifulSoup(response48.content, 'html.parser')
 
@@ -1419,6 +1417,745 @@ ul_tag = h3_tag.find_next('ul')
 li_texts = [li.get_text(strip=True) for li in ul_tag.find_all('li')]
 li_manners.extend(li_texts)
 
+# Website 49
+url49 = 'https://mnsaa.com/%D8%A7%D9%81%D8%B6%D9%84-%D8%A3%D9%85%D8%AB%D8%A7%D9%84-%D9%88%D8%B9%D8%A8%D8%B1-%D8%B9%D9%86-%D8%A7%D9%84%D8%AA%D8%A8%D8%B0%D9%8A%D8%B1-%D8%AC%D8%AF%D9%8A%D8%AF%D8%A9/'
+response49 = requests.get(url49)
+
+# Set correct encoding for Arabic text
+response49.encoding = 'utf-8'
+li_text_list = []
+# Parse the page content using BeautifulSoup
+soup49 = BeautifulSoup(response49.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup49.select('div.singular-body ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_text_list.append(li.get_text(strip=True))
+
+li_text_list = li_text_list[5:]
+li_manners.extend(li_text_list)
+
+# Website 50
+url50 = 'https://trend.muhtwa.com/aqwal/amthal/%D8%A3%D9%85%D8%AB%D8%A7%D9%84-%D8%B9%D9%86-%D8%A7%D9%84%D8%AA%D8%A8%D8%B0%D9%8A%D8%B1/'
+response50 = requests.get(url50)
+
+# Set correct encoding for Arabic text
+response50.encoding = 'utf-8'
+li_text_list = []
+# Parse the page content using BeautifulSoup
+soup50 = BeautifulSoup(response50.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup50.select('div.entry ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_text_list.append(li.get_text(strip=True))
+
+li_text_list = li_text_list[6:]
+li_manners.extend(li_text_list)
+
+# Website URL 51
+url51 = 'https://dorar.net/alakhlaq/2892/%D8%A8-%D9%85%D9%86-%D8%A3%D9%82%D9%88%D8%A7%D9%84-%D8%A7%D9%84%D8%B3%D9%84%D9%81-%D9%88%D8%A7%D9%84%D8%B9%D9%84%D9%85%D8%A7%D8%A1'
+response51 = requests.get(url51)
+
+# Set correct encoding for Arabic text
+response51.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup51 = BeautifulSoup(response51.content, 'html.parser')
+# Find the specific <div> by its class name
+div_content = soup51.find('div', class_='w-100 mt-4')
+
+# Extract and clean the text
+if div_content:
+    text = div_content.get_text(separator="\n", strip=True)
+    li_manners.append(text)
+
+
+# Website 52
+url52 = 'https://infinitequotes4u.com/%d8%a7%d9%82%d8%aa%d8%a8%d8%a7%d8%b3%d8%a7%d8%aa-%d8%b9%d8%b2%d8%a9-%d8%a7%d9%84%d9%86%d9%81%d8%b3/'
+response52 = requests.get(url52)
+
+# Set correct encoding for Arabic text
+response52.encoding = 'utf-8'
+li_text_list = []
+# Parse the page content using BeautifulSoup
+soup52 = BeautifulSoup(response52.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup52.select('div.entry-content ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_text_list.append(li.get_text(strip=True))
+
+li_text_list = li_text_list[17:]
+li_manners.extend(li_text_list)
+
+# Website 53
+url53 = 'https://infinitequotes4u.com/%d8%a3%d9%82%d9%88%d8%a7%d9%84-%d8%b9%d9%84%d9%8a-%d8%a8%d9%86-%d8%a3%d8%a8%d9%8a-%d8%b7%d8%a7%d9%84%d8%a8-%d8%b9%d9%86-%d8%a7%d9%84%d8%a3%d8%ae%d9%84%d8%a7%d9%82/'
+response53 = requests.get(url53)
+
+# Set correct encoding for Arabic text
+response53.encoding = 'utf-8'
+li_text_list = []
+# Parse the page content using BeautifulSoup
+soup53 = BeautifulSoup(response53.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup53.select('div.entry-content ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_text_list.append(li.get_text(strip=True))
+
+li_text_list = li_text_list[11:]
+li_manners.extend(li_text_list)
+
+# Website 54
+url54 = 'https://infinitequotes4u.com/%d9%85%d9%82%d8%aa%d8%b7%d9%81%d8%a7%d8%aa-%d8%b9%d9%86-%d8%ae%d9%84%d9%82-%d8%a7%d9%84%d8%aa%d9%88%d8%a7%d8%b6%d8%b9/'
+response54 = requests.get(url54)
+
+# Set correct encoding for Arabic text
+response54.encoding = 'utf-8'
+li_text_list = []
+# Parse the page content using BeautifulSoup
+soup54 = BeautifulSoup(response54.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup54.select('div.entry-content ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_text_list.append(li.get_text(strip=True))
+
+li_text_list = li_text_list[19:]
+li_manners.extend(li_text_list)
+
+# Website 55
+url55 = 'https://infinitequotes4u.com/%d8%a3%d9%82%d9%88%d8%a7%d9%84-%d8%b9%d9%85%d8%b1-%d8%a8%d9%86-%d8%a7%d9%84%d8%ae%d8%b7%d8%a7%d8%a8-%d8%b9%d9%86-%d8%a7%d9%84%d9%82%d9%84%d9%88%d8%a8/'
+response55 = requests.get(url55)
+
+# Set correct encoding for Arabic text
+response55.encoding = 'utf-8'
+li_text_list = []
+# Parse the page content using BeautifulSoup
+soup55 = BeautifulSoup(response55.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup55.select('div.entry-content ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_text_list.append(li.get_text(strip=True))
+
+li_text_list = li_text_list[13:]
+li_manners.extend(li_text_list)
+
+# Website 56
+url56 = 'https://infinitequotes4u.com/%d9%83%d9%84%d9%85%d8%a7%d8%aa-%d8%b1%d8%a7%d8%a6%d8%b9%d8%a9-%d8%b9%d9%86-%d8%a7%d9%84%d8%b5%d8%af%d8%a7%d9%82%d8%a9-%d9%88%d8%a7%d9%84%d8%ad%d8%a8-%d9%81%d9%8a-%d8%a7%d9%84%d9%84%d9%87/'
+response56 = requests.get(url56)
+
+# Set correct encoding for Arabic text
+response56.encoding = 'utf-8'
+li_text_list = []
+# Parse the page content using BeautifulSoup
+soup56 = BeautifulSoup(response56.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup56.select('div.entry-content ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_text_list.append(li.get_text(strip=True))
+
+li_text_list = li_text_list[11:]
+li_manners.extend(li_text_list)
+
+
+# Website 57
+url57 = 'https://www.ra2ej.com/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D8%B9%D9%86-%D8%A7%D9%84%D8%B7%D9%85%D8%B9-690977.html'
+response57 = requests.get(url57)
+
+# Set correct encoding for Arabic text
+response57.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup57 = BeautifulSoup(response57.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup57.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+
+# Website 58
+url58 = 'https://www.ra2ej.com/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D8%B9%D9%86-%D8%A7%D9%84%D8%B4%D9%81%D9%82%D8%A9-581207.html'
+response58 = requests.get(url58)
+
+# Set correct encoding for Arabic text
+response58.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup58 = BeautifulSoup(response58.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup58.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+# Website 59
+url59 = 'https://www.ra2ej.com/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D8%B9%D9%86-%D8%A7%D9%84%D8%B3%D9%81%D9%87%D8%A7%D8%A1-676085.html'
+response59 = requests.get(url59)
+
+# Set correct encoding for Arabic text
+response59.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup59 = BeautifulSoup(response59.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup59.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+
+# Website 60
+url60 = 'https://www.ra2ej.com/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D8%B9%D9%86-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%87%D8%A7%D8%AF-614017.html'
+response60 = requests.get(url60)
+
+# Set correct encoding for Arabic text
+response60.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup60 = BeautifulSoup(response60.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup60.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+# Website 61
+url61 = 'https://www.ra2ej.com/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D8%B9%D9%86-%D8%A7%D9%84%D9%85%D9%88%D8%AF%D8%A9-614020.html'
+response61 = requests.get(url61)
+
+# Set correct encoding for Arabic text
+response61.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup61 = BeautifulSoup(response61.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup61.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+
+# Website 62
+url62 = 'https://www.ra2ej.com/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D8%B9%D9%86-%D8%A7%D9%84%D9%85%D8%A3%D8%B3%D8%A7%D8%A9-473519.html'
+response62 = requests.get(url62)
+
+# Set correct encoding for Arabic text
+response62.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup62 = BeautifulSoup(response62.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup62.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+
+# Website 63
+url63 = 'https://www.ra2ej.com/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D8%B9%D9%86-%D8%A7%D9%84%D8%BA%D9%8A%D8%B1%D8%A9-%D9%88%D8%A7%D9%84%D8%AD%D8%B3%D8%AF-%D8%A8%D9%8A%D9%86-%D8%A7%D9%84%D9%86%D8%B3%D8%A7%D8%A1-422178.html'
+response63 = requests.get(url63)
+
+# Set correct encoding for Arabic text
+response63.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup63 = BeautifulSoup(response63.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup63.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+
+# Website 64
+url64 = 'https://www.ra2ej.com/%D8%AD%D9%83%D9%85-%D8%B9%D9%86-%D8%A7%D9%84%D8%AC%D8%AF-%D9%88%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%87%D8%A7%D8%AF-690842.html'
+response64 = requests.get(url64)
+# Set correct encoding for Arabic text
+response64.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup64 = BeautifulSoup(response64.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup64.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+# Website 65
+url65 = 'https://www.ra2ej.com/%D9%83%D9%84%D8%A7%D9%85-%D8%B9%D9%86-%D8%A7%D9%84%D8%A7%D8%AD%D8%AA%D8%B1%D8%A7%D9%85-%D9%88%D8%A7%D9%84%D8%A7%D9%87%D8%AA%D9%85%D8%A7%D9%85-690816.html'
+response65 = requests.get(url65)
+
+# Set correct encoding for Arabic text
+response65.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup65 = BeautifulSoup(response65.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup65.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+
+# Website 66
+url66 = 'https://www.ra2ej.com/%D8%A7%D9%84%D9%8A%D9%88%D9%85-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%D9%8A-%D9%84%D9%84%D8%A7%D8%B9%D9%86%D9%81-%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D8%B9%D9%86-%D8%A7%D9%84%D8%AA%D8%B3%D8%A7%D9%85%D8%AD-423172.html'
+response66 = requests.get(url66)
+
+# Set correct encoding for Arabic text
+response66.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup66 = BeautifulSoup(response66.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup66.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+
+# Website 67
+url67 = 'https://www.ra2ej.com/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D8%B9%D9%86-%D8%A7%D9%84%D9%84%D9%8A%D9%86-581210.html'
+response67 = requests.get(url67)
+
+# Set correct encoding for Arabic text
+response67.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup67 = BeautifulSoup(response67.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup67.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+
+# Website 68
+url68 = 'https://www.ra2ej.com/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D8%B9%D9%86-%D8%A7%D9%84%D8%AA%D8%B1%D8%A7%D8%AD%D9%85-609850.html'
+response68 = requests.get(url68)
+
+# Set correct encoding for Arabic text
+response68.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup68 = BeautifulSoup(response68.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup68.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+
+# Website 69
+url69 = 'https://www.ra2ej.com/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D8%B9%D9%86-%D8%A7%D9%84%D8%B4%D9%85%D9%88%D8%AE-517850.html'
+response69 = requests.get(url69)
+
+# Set correct encoding for Arabic text
+response69.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup69 = BeautifulSoup(response69.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup69.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+
+# Website 70
+url70 = 'https://www.ra2ej.com/%D9%8A%D9%88%D9%85-%D8%A7%D9%84%D8%A3%D8%AE%D9%84%D8%A7%D9%82-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%D9%8A-%D8%A3%D9%87%D8%AF%D8%A7%D9%81%D9%87-%D9%88%D8%A3%D8%AC%D9%85%D9%84-%D9%85%D8%A7-%D9%82%D9%8A%D9%84-%D8%B9%D9%86-%D8%A7%D9%84%D8%A3%D8%AE%D9%84%D8%A7%D9%82-690265.html'
+response70 = requests.get(url70)
+soup70 = BeautifulSoup(response70.content, 'html.parser')
+
+# Find the specific <h2> tag containing the desired text
+h2 = soup70.find('h2', string=lambda t: t and 'أجمل ما قيل عن الأخلاق' in t)
+
+# Check if the <h2> tag was found
+if h2:
+    # Find all <p> elements that come after the <h2> tag
+    next_sibling = h2.find_next_sibling()
+    
+    while next_sibling:
+        # If the next sibling is a <p> tag, extract its text
+        if next_sibling.name == 'p':
+            li_manners.append(next_sibling.get_text(strip=True))
+        
+        # Move to the next sibling element
+        next_sibling = next_sibling.find_next_sibling()
+
+
+# Website 71
+url71 = 'https://www.ra2ej.com/%D8%A3%D8%AC%D9%85%D9%84-%D9%85%D8%A7-%D9%82%D9%8A%D9%84-%D8%B9%D9%86-%D8%A7%D9%84%D8%B5%D9%85%D8%AA-473093.html'
+response71 = requests.get(url71)
+
+# Set correct encoding for Arabic text
+response71.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup71 = BeautifulSoup(response71.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup71.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+# Website 72
+url72 = 'https://www.ra2ej.com/%D8%A3%D8%AC%D9%85%D9%84-%D9%85%D8%A7-%D9%82%D9%8A%D9%84-%D8%B9%D9%86-%D8%A7%D9%84%D8%B6%D9%85%D9%8A%D8%B1-475412.html'
+response72 = requests.get(url72)
+
+# Set correct encoding for Arabic text
+response72.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup72 = BeautifulSoup(response72.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup72.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+
+# Website 73
+url73 = 'https://www.ra2ej.com/%D8%A3%D8%AC%D9%85%D9%84-%D9%85%D8%A7-%D9%82%D9%8A%D9%84-%D9%81%D9%8A-%D8%A7%D9%84%D8%BA%D9%8A%D8%B1%D8%A9-567184.html'
+response73 = requests.get(url73)
+
+# Set correct encoding for Arabic text
+response73.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup73 = BeautifulSoup(response73.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup73.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+
+# Website 74
+url74 = 'https://www.ra2ej.com/%D8%A3%D9%87%D9%85-%D8%A7%D9%84%D8%A3%D8%AD%D8%A7%D8%AF%D9%8A%D8%AB-%D8%B9%D9%86-%D8%A7%D9%84%D8%B5%D8%AF%D9%82-%D9%84%D8%AA%D9%86%D9%85%D9%8A%D8%A9-%D9%85%D9%83%D8%A7%D8%B1%D9%85-%D8%A7%D9%84%D8%A3%D8%AE%D9%84%D8%A7%D9%82-466133.html'
+response74 = requests.get(url74)
+
+# Set correct encoding for Arabic text
+response74.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup74 = BeautifulSoup(response74.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup74.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+
+# Website 75
+url75 = 'https://www.ra2ej.com/100-%D8%AD%D9%83%D9%85%D8%A9-%D8%B9%D9%86-%D9%85%D9%83%D8%A7%D8%B1%D9%85-%D8%A7%D9%84%D8%A3%D8%AE%D9%84%D8%A7%D9%82-644279.html'
+response75 = requests.get(url75)
+
+# Set correct encoding for Arabic text
+response75.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup75 = BeautifulSoup(response75.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup75.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+
+# Website 76
+url76 = 'https://www.ra2ej.com/%D8%A3%D9%82%D9%88%D8%A7%D9%84-%D8%A7%D9%84%D8%B5%D8%AD%D8%A7%D8%A8%D8%A9-%D8%B9%D9%86-%D8%A7%D9%84%D8%A3%D8%AE%D9%84%D8%A7%D9%82-619616.html'
+response76 = requests.get(url76)
+
+# Set correct encoding for Arabic text
+response76.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup76 = BeautifulSoup(response76.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup76.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+
+# Website 77
+url77 = 'https://www.ra2ej.com/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D8%B9%D9%86-%D8%A7%D9%84%D8%A3%D8%AE%D9%84%D8%A7%D9%82-%D9%84%D9%84%D9%88%D8%A7%D8%AA%D8%B3-634157.html'
+response77 = requests.get(url77)
+
+# Set correct encoding for Arabic text
+response77.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup77 = BeautifulSoup(response77.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup77.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+
+# Website 78
+url78 = 'https://www.ra2ej.com/%D9%83%D9%84%D9%85%D8%A7%D8%AA-%D9%85%D8%A7%D8%AB%D9%88%D8%B1%D8%A9-%D8%B9%D9%86-%D8%A7%D9%84%D8%A7%D8%AE%D9%84%D8%A7%D9%82-498685.html'
+response78 = requests.get(url78)
+
+# Set correct encoding for Arabic text
+response78.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup78 = BeautifulSoup(response78.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup78.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+
+# Website 79
+url79 = 'https://www.ra2ej.com/%D9%83%D9%84%D9%85%D8%A7%D8%AA-%D9%85%D9%85%D9%8A%D8%B2%D8%A9-%D8%B9%D9%86-%D8%A7%D9%84%D8%A3%D8%AE%D9%84%D8%A7%D9%82-521094.html'
+response79 = requests.get(url79)
+
+# Set correct encoding for Arabic text
+response79.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup79 = BeautifulSoup(response79.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup79.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+
+# Website 80
+url80 = 'https://www.ra2ej.com/%D8%AD%D9%83%D9%85-%D8%B9%D9%86-%D8%A7%D9%84%D8%A3%D8%AE%D9%84%D8%A7%D9%82-%D8%A7%D9%84%D8%B3%D9%8A%D8%A6%D8%A9-562442.html'
+response80 = requests.get(url80)
+
+# Set correct encoding for Arabic text
+response80.encoding = 'utf-8'
+li_text_list = []
+# Parse the page content using BeautifulSoup
+soup80 = BeautifulSoup(response80.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup80.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+
+# Website 81
+url81 = 'https://www.ra2ej.com/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D8%B1%D8%A7%D9%82%D9%8A%D8%A9-%D8%B9%D9%86-%D8%A7%D9%84%D8%A3%D8%AE%D9%84%D8%A7%D9%82-463185.html'
+response81 = requests.get(url81)
+
+# Set correct encoding for Arabic text
+response81.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup81 = BeautifulSoup(response81.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup81.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+
+# Website 82
+url82 = 'https://www.ra2ej.com/%D8%A3%D9%82%D9%88%D8%A7%D9%84-%D8%B9%D9%86-%D8%AD%D8%B3%D9%86-%D8%A7%D9%84%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9-476031.html'
+response82 = requests.get(url82)
+
+# Set correct encoding for Arabic text
+response82.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup82 = BeautifulSoup(response82.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup82.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+
+# Website 83
+url83 = 'https://www.ra2ej.com/%D8%A3%D8%AC%D9%85%D9%84-%D8%AD%D9%83%D9%85-%D8%B9%D9%86-%D9%85%D8%B9%D8%A7%D9%85%D9%84%D8%A9-%D8%A7%D9%84%D9%86%D8%A7%D8%B3-679373.html'
+response83 = requests.get(url83)
+
+# Set correct encoding for Arabic text
+response83.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup83 = BeautifulSoup(response83.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup83.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+
+# Website 84
+url84 = 'https://www.ra2ej.com/%D8%A3%D9%82%D9%88%D8%A7%D9%84-%D8%B9%D9%86-%D8%A7%D9%84%D9%83%D8%A8%D8%B1%D9%8A%D8%A7%D8%A1-527215.html'
+response84 = requests.get(url84)
+
+# Set correct encoding for Arabic text
+response84.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup84 = BeautifulSoup(response84.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup84.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+
+# Website 85
+url85 = 'https://www.ra2ej.com/%D8%A3%D9%82%D9%88%D8%A7%D9%84-%D8%B9%D9%86-%D8%A7%D9%84%D8%AE%D8%B0%D9%84%D8%A7%D9%86-%D9%88%D8%A7%D9%84%D8%AD%D8%B2%D9%86-472899.html'
+response85 = requests.get(url85)
+
+# Set correct encoding for Arabic text
+response85.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup85 = BeautifulSoup(response85.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup85.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+
+# Website 86
+url86 = 'https://www.ra2ej.com/%D8%A3%D9%82%D9%88%D8%A7%D9%84-%D8%B9%D9%86-%D9%82%D9%84%D8%A9-%D8%A7%D9%84%D8%A5%D8%AE%D9%84%D8%A7%D8%B5-%D9%88%D8%A7%D9%84%D9%88%D9%81%D8%A7%D8%A1-475548.html'
+response86 = requests.get(url86)
+
+# Set correct encoding for Arabic text
+response86.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup86 = BeautifulSoup(response86.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup86.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+
+# Website 87
+url87 = 'https://www.ra2ej.com/%D8%B9%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D9%88%D8%A3%D9%82%D9%88%D8%A7%D9%84-%D8%B9%D9%86-%D8%A7%D9%84%D9%85%D8%A7%D9%84-593128.html'
+response87 = requests.get(url87)
+
+# Set correct encoding for Arabic text
+response87.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup87 = BeautifulSoup(response87.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup87.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
+
+
+# Website 88
+url88 = 'https://www.ra2ej.com/%D8%A3%D9%82%D9%88%D8%A7%D9%84-%D8%B9%D9%86-%D9%81%D8%B6%D9%8A%D9%84%D8%A9-%D8%A7%D9%84%D8%B5%D9%85%D8%AA-599632.html'
+response88 = requests.get(url88)
+
+# Set correct encoding for Arabic text
+response88.encoding = 'utf-8'
+# Parse the page content using BeautifulSoup
+soup88 = BeautifulSoup(response88.content, 'html.parser')
+
+# Find all the <ul> elements inside the main div with class 'singular-body'
+ul_elements = soup88.select('div.all_wrapper ul')
+
+# Extract and print the text from each <ul> element
+for ul in ul_elements:
+    for li in ul.find_all('li'):
+        li_manners.append(li.get_text(strip=True))
 
 
 good_Morals = [
