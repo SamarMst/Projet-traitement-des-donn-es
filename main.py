@@ -1,3 +1,4 @@
+import re
 import requests
 from bs4 import BeautifulSoup
 from camel_tools.sentiment import SentimentAnalyzer
@@ -2381,7 +2382,12 @@ with open('manners.csv', mode='w', newline='', encoding='utf-8') as csv_file:
         writer.writerow({"Citation": citation, "Manner": manner})
 
 
-
+##########  Preprocessing the Data ##########
+# Function to remove symbols from each word
+def clean_words(word_list):
+    cleaned_words = [re.sub(r'[^a-zA-Z0-9]', '', word) for word in word_list]
+    return cleaned_words
+cleaned_list = clean_words(li_manners)
 """
 # Create an Excel workbook and worksheet
 workbook = xlsxwriter.Workbook('manners.xlsx')
