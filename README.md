@@ -1,4 +1,4 @@
-# 🔣 Data Processing Project "Good manners" (اخلاق حميدة)
+# 📊 Data Processing Project "Good manners" (اخلاق حميدة)
 ## 1.Definition of the problem and project context
 ## 2.Selection and collection of data
 ### Prerequisites
