@@ -17,6 +17,7 @@ sentiment_analyzer = SentimentAnalyzer.pretrained()
 # Initialize the morphological analyzer with no backoff
 morph_analyzer = Analyzer(db)
 
+########## Data Collection ########## 
 #Website 1
 # URL of the website to scrape
 url = 'https://mawdoo3.com/%D8%A3%D9%85%D8%AB%D8%A7%D9%84_%D9%88%D8%AD%D9%83%D9%85_%D8%B9%D9%86_%D8%A7%D9%84%D8%A3%D8%AE%D9%84%D8%A7%D9%82#:~:text=%D8%A5%D8%B0%D8%A7%20%D8%A3%D8%B1%D8%AF%D8%AA%20%D8%A3%D9%86%20%D8%AA%D8%B7%D8%A7%D8%B9%20%D9%81%D8%A3%D9%85%D8%B1%20%D8%A8%D9%85%D8%A7%20%D9%8A%D8%B3%D8%AA%D8%B7%D8%A7%D8%B9.%20%D9%81%D9%8A,%D8%A3%D9%83%D8%B1%D9%85%D8%AA%20%D8%A7%D9%84%D9%83%D8%B1%D9%8A%D9%85%20%D9%85%D9%8E%D9%84%D9%83%D8%AA%D9%87%20%D9%88%D8%A5%D9%86%20%D8%A3%D9%86%D8%AA%D9%8E%20%D8%A3%D9%83%D8%B1%D9%85%D8%AA%D9%8E%20%D8%A7%D9%84%D9%84%D8%A6%D9%8A%D9%85%20%D8%AA%D9%85%D8%B1%D8%AF%D8%A7.'
@@ -2157,6 +2158,8 @@ for ul in ul_elements:
     for li in ul.find_all('li'):
         li_manners.append(li.get_text(strip=True))
 
+########## Data Classification ########## 
+
 
 good_Morals = [
     "الاحترامُ والتَّوقِيرُ",
@@ -2363,6 +2366,7 @@ def classify_citation(citation):
     sentiment = sentiment_analyzer.predict([citation])[0]
     return "Sentiment: " + sentiment
 
+##########  Storing the Data in a CSV file ########## 
 # Create a CSV file
 with open('manners.csv', mode='w', newline='', encoding='utf-8') as csv_file:
     fieldnames = ["Citation", "Manner"]
